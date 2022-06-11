@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class MailTemplate extends AdminModel
+{
+    use HasFactory;
+
+    protected $table = 'mail_templates';
+
+    protected $fillable = ['title', 'code', 'subject', 'content', 'active'];
+
+}

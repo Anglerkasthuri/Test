@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateTimezonesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('timezones', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('uuid', 36);
+            $table->string('title', 191);
+            $table->string('gmt_sign', 25);
+            $table->string('gmt_hour', 25);
+            $table->string('gmt_min', 25);
+            $table->string('utc', 191);
+            $table->boolean('active')->default(true);
+            $table->unsignedBigInteger('created_by_id')->nullable();
+            $table->unsignedBigInteger('updated_by_id')->nullable();
+            $table->timestamps();
+            $table->unsignedBigInteger('deleted_by_id')->nullable();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('timezones');
+    }
+}
